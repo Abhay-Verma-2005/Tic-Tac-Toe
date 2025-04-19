@@ -13,7 +13,7 @@ let checkWin = () => {
             return combination; 
         }
     }
-    return null;
+    return null; 
 };
 
 let SendMsg = (text) => {
@@ -54,6 +54,18 @@ let handleWinAnimation = (winningCombo) => {
     }, 800);
 };
 
+let handleDrawAnimation = () => {
+    boxes.forEach((box, index) => {
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const distance = Math.sqrt(Math.pow(row, 2) + Math.pow(col, 2));
+        const delay = distance * 100; 
+        setTimeout(() => {
+            box.classList.add('draw');
+        }, delay);
+    });
+};
+
 boxes.forEach((box, index) => {
     box.addEventListener('click', () => {
         if (!gameBoard[index] && StartON) {
@@ -69,6 +81,7 @@ boxes.forEach((box, index) => {
             } else if (gameBoard.every(cell => cell)) {
                 SendMsg('Game ended in a draw!');
                 StartON = false;
+                handleDrawAnimation();
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 SendMsg(`Player ${currentPlayer}'s turn`);
