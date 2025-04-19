@@ -56,7 +56,7 @@ Tic-Tac-Toe/
 │
 ├── index.html         # Main HTML file with internal Css
 ├── DCMC               # Output Files
-└── script.js          # Game logic and interactivity
+└── app.js          # Game logic and interactivity
 ```
 
 ---
